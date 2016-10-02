@@ -62,6 +62,8 @@ public class HolidaysRUsManageProducts extends JFrame {
 				"New column", "New column"
 			}
 		));
+		table_1.getColumnModel().getColumn(0).setPreferredWidth(263);
+		table_1.getColumnModel().getColumn(1).setPreferredWidth(61);
 		table_1.setBounds(12, 13, 408, 176);
 		contentPane.add(table_1);
 		
