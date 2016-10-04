@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 public class AddSaleScreen extends JFrame {
 	
 	private JPanel contentPane;
+	private JFrame thisFrame;
 
 	/**
 	 * Launch the application.
@@ -38,6 +39,7 @@ public class AddSaleScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public AddSaleScreen() {
+		thisFrame = this;
 		setTitle("Holidays R Us - Add Sales");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -87,7 +89,9 @@ public class AddSaleScreen extends JFrame {
 		JButton btnConfirm = new JButton("Confirm");
 		btnConfirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);//hides the second JFrame and returns to the primary
+				HolidaysRUsManageSales frame = new HolidaysRUsManageSales();
+				frame.setVisible(true);
+				thisFrame.dispose();
 			}
 		});
 		btnConfirm.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -97,7 +101,9 @@ public class AddSaleScreen extends JFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);//hides the second JFrame and returns to the primary
+				HolidaysRUsManageSales frame = new HolidaysRUsManageSales();
+				frame.setVisible(true);
+				thisFrame.dispose();
 			}
 		});
 		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 15));

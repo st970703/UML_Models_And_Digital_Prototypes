@@ -17,8 +17,9 @@ public class addHotelDealScreen extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtPullmanHotel;
 	private JTextField textField_2;
+	private JFrame _thisFrame;
 
 	/**
 	 * Launch the application.
@@ -40,6 +41,7 @@ public class addHotelDealScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public addHotelDealScreen() {
+		_thisFrame = this;
 		setTitle("Holidays R Us - Add Hotel Deals");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -64,16 +66,19 @@ public class addHotelDealScreen extends JFrame {
 		contentPane.add(lblDurationdays);
 
 		textField = new JTextField();
+		textField.setText("600");
 		textField.setBounds(199, 40, 200, 25);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(199, 84, 200, 25);
-		contentPane.add(textField_1);
+		txtPullmanHotel = new JTextField();
+		txtPullmanHotel.setText("Pullman Hotel");
+		txtPullmanHotel.setColumns(10);
+		txtPullmanHotel.setBounds(199, 84, 200, 25);
+		contentPane.add(txtPullmanHotel);
 
 		textField_2 = new JTextField();
+		textField_2.setText("1");
 		textField_2.setColumns(10);
 		textField_2.setBounds(199, 127, 200, 25);
 		contentPane.add(textField_2);
@@ -83,18 +88,32 @@ public class addHotelDealScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (textField.getText().equals("")) {
 					confirmInvalidInput(0);
-				} else if (textField_1.getText().equals("")) {
+				} else if (txtPullmanHotel.getText().equals("")) {
 					confirmInvalidInput(1);
 				} else if (textField_2.getText().equals("")) {
 					confirmInvalidInput(2);
 				} else {
-					setVisible(false);//hides the second JFrame and returns to the primary
+					HolidaysRUsManageProducts frame = new HolidaysRUsManageProducts();
+					frame.setVisible(true);
+					_thisFrame.dispose();
 				}
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(199, 199, 97, 25);
 		contentPane.add(btnNewButton);
+		
+		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HolidaysRUsManageProducts frame = new HolidaysRUsManageProducts();
+				frame.setVisible(true);
+				_thisFrame.dispose();
+			}
+		});
+		btnCancel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnCancel.setBounds(323, 200, 97, 25);
+		contentPane.add(btnCancel);
 	}
 	private void confirmInvalidInput(int option) {
 		if(option == 0) {

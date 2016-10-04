@@ -25,6 +25,7 @@ public class HolidaysRUsManageSales extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JButton btnNewButton;
+	private JFrame _thisFrame;
 	
 	/**
 	 * Launch the application.
@@ -46,6 +47,7 @@ public class HolidaysRUsManageSales extends JFrame {
 	 * Create the frame.
 	 */
 	public HolidaysRUsManageSales() {
+		_thisFrame = this;
 		setTitle("Holidays R Us - Manage Sales");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -73,6 +75,7 @@ public class HolidaysRUsManageSales extends JFrame {
 				"New column", "New column", "New column", "New column"
 			}
 		));
+		table.setEnabled(false);
 		contentPane.add(table);
 		
 		JButton btnAddSales = new JButton("Add Sales");
@@ -80,6 +83,7 @@ public class HolidaysRUsManageSales extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AddSaleScreen addSaleframe = new AddSaleScreen();
 				addSaleframe.setVisible(true);
+				_thisFrame.dispose();
 			}
 		});
 		btnAddSales.setBounds(12, 201, 105, 25);
@@ -97,7 +101,9 @@ public class HolidaysRUsManageSales extends JFrame {
 		btnNewButton = new JButton("Home");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);//hides the second JFrame and returns to the primary
+				HolidaysRUs frame = new HolidaysRUs();
+				frame.setVisible(true);
+				_thisFrame.dispose();
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon(HolidaysRUsManageSales.class.getResource("/javax/swing/plaf/metal/icons/ocean/homeFolder.gif")));

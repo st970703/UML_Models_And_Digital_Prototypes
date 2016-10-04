@@ -19,6 +19,7 @@ public class AddCustomerScreen extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JFrame thisFrame;
 
 	/**
 	 * Launch the application.
@@ -40,7 +41,7 @@ public class AddCustomerScreen extends JFrame {
 	 * Create the frame.
 	 */
 	public AddCustomerScreen(AddOrModify option) {
-
+		thisFrame = this;
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -82,17 +83,17 @@ public class AddCustomerScreen extends JFrame {
 		lblCreditCardNumber.setBounds(16, 137, 170, 16);
 		contentPane.add(lblCreditCardNumber);
 
-		textField = new JTextField();
+		textField = new JTextField("David Qi");
 		textField.setBounds(220, 20, 200, 22);
 		contentPane.add(textField);
 		textField.setColumns(10);
 
-		textField_1 = new JTextField();
+		textField_1 = new JTextField("Glenfield, Auckland");
 		textField_1.setColumns(10);
 		textField_1.setBounds(220, 72, 200, 22);
 		contentPane.add(textField_1);
 
-		textField_2 = new JTextField();
+		textField_2 = new JTextField("8777 0000 2222 7778");
 		textField_2.setColumns(10);
 		textField_2.setBounds(220, 137, 200, 22);
 		contentPane.add(textField_2);
@@ -102,11 +103,11 @@ public class AddCustomerScreen extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (textField.getText().equals("")) {
 					confirmInvalidInput(0);
-				} 
-				if (textField_2.getText().equals("")) {
+				} else if (textField_2.getText().equals("")) {
 					confirmInvalidInput(1);
+				} else{
+					setVisible(false);//hides the second JFrame and returns to the primary
 				}
-				setVisible(false);//hides the second JFrame and returns to the primary
 			}
 		});
 		btnConfirm.setFont(new Font("Tahoma", Font.PLAIN, 15));

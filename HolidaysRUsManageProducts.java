@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,8 @@ public class HolidaysRUsManageProducts extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table_1;
+	private JButton btnNewButton;
+	private JFrame _thisFrame;
 
 	/**
 	 * Launch the application.
@@ -35,6 +38,7 @@ public class HolidaysRUsManageProducts extends JFrame {
 	 * Create the frame.
 	 */
 	public HolidaysRUsManageProducts() {
+		_thisFrame = this;
 		setTitle("Holidays R Us - Manage Products");
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -65,6 +69,7 @@ public class HolidaysRUsManageProducts extends JFrame {
 		table_1.getColumnModel().getColumn(0).setPreferredWidth(263);
 		table_1.getColumnModel().getColumn(1).setPreferredWidth(61);
 		table_1.setBounds(12, 13, 408, 176);
+		table_1.setEnabled(false);
 		contentPane.add(table_1);
 		
 		JButton btnAddFlights = new JButton("Add Flights");
@@ -72,6 +77,7 @@ public class HolidaysRUsManageProducts extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				addFlightScreen addFlightFrame = new addFlightScreen();
 				addFlightFrame.setVisible(true);
+				_thisFrame.dispose();
 			}
 		});
 		btnAddFlights.setBounds(29, 215, 97, 25);
@@ -82,9 +88,22 @@ public class HolidaysRUsManageProducts extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				addHotelDealScreen addHotelDealFrame = new addHotelDealScreen();
 				addHotelDealFrame.setVisible(true);
+				_thisFrame.dispose();
 			}
 		});
-		button.setBounds(204, 215, 97, 25);
+		button.setBounds(159, 215, 97, 25);
 		contentPane.add(button);
+		
+		btnNewButton = new JButton("Home");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				HolidaysRUs frame = new HolidaysRUs();
+				frame.setVisible(true);
+				_thisFrame.dispose();
+			}
+		});
+		btnNewButton.setIcon(new ImageIcon(HolidaysRUsManageSales.class.getResource("/javax/swing/plaf/metal/icons/ocean/homeFolder.gif")));
+		btnNewButton.setBounds(323, 215, 97, 25);
+		contentPane.add(btnNewButton);
 	}
 }
